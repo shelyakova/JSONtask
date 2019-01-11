@@ -1,0 +1,33 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400i,700);
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  min-height: 100%;
+  text-align: center;
+  background-color: #e8cf9b;
+  color: white;
+  background-size: 100%;
+  font-weight: bold;
+  font-family: Roboto;
+}
+
+.user {
+  background: white;
+  color: #8d8575;
+  text-align: left;
+  margin: 0 15% 5% 15%;
+  padding: 7px;
+}
+
+.App-header {
+  margin: 5px;
+}
+
+.button {
+  margin: 0 0 10px 0;
+}
+
+.hidden {
+  display: none;
+}

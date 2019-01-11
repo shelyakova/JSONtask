@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 
 import users from './users.json';
-import User from './User.js';
 import { connect } from "react-redux";
+import { Button } from 'react-bootstrap';
 
 class App extends Component {
   state = {
-    user: []
+    user: [],
+    userInfo: 1,
+    usersOnPage: 5
   };
 
   render() {
@@ -17,26 +19,50 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <label>Users</label>
+          <label><h2>Users</h2></label>
         </header>
         <main>
-          <button
+          <Button
+          className={this.state.userInfo === 0 ? "hidden" : "button"}
             onClick={() => {
               Object.values(users).map((item, key) => {
                   item.map((user, key) => {
+                    this.state.userInfo === 1 &&
                     handleClick(user.id, user.name, user.surname, user.desc);
                   })
               })
+              this.setState({userInfo: 0})
             }}
           >
             Show users
-          </button>
+          </Button>
           {data.map((i, key) => (
-            <div class="user">
-              <p key={i.id}>{i.name} {i.surname}</p>
-              <p key={key}>{i.desc}</p>
-            </div>
+              <div className={key < this.state.usersOnPage ? "user": null}>
+                <p key={i.id}>
+                  {key < this.state.usersOnPage ? i.name : null}
+                    &nbsp;
+                  {key < this.state.usersOnPage ? i.surname : null}
+                </p>
+                  {key < this.state.usersOnPage ? <hr/> : null}
+                <p key={key}>
+                <h5>
+                  {key < this.state.usersOnPage ? i.desc : null}
+                </h5>
+                </p>
+              </div>
           ))}
+          {console.log(this.state.userInfo)}
+          <Button
+            className={this.state.usersOnPage >= 20
+              || this.state.userInfo === 1
+              ? "hidden" : "none"}
+            onClick={() => {
+              var newUsers = this.state.usersOnPage + 5;
+              this.setState({usersOnPage: newUsers})
+            }}
+          >
+            More users
+          </Button>
         </main>
       </div>
     );

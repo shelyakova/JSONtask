@@ -10,10 +10,8 @@ function playlist(state = [], action) {
   if (action.type === "ADD_TRACK") {
     return [...state, action.payload];
   }
-  console.log("STATE", state);
   return state;
 }
-console.log("STORE", store);
 const store = createStore(playlist);
 
 
