@@ -4,6 +4,7 @@ import './App.scss';
 import users from './users.json';
 import { connect } from "react-redux";
 import { Button } from 'react-bootstrap';
+import axios from "axios";
 
 class App extends Component {
   state = {
@@ -40,7 +41,7 @@ class App extends Component {
               <div className={key < this.state.usersOnPage ? "user": null}>
                 <p key={i.id}>
                   {key < this.state.usersOnPage ? i.name : null}
-                    &nbsp;
+                  {key < this.state.usersOnPage ? "&nbsp;" : null}
                   {key < this.state.usersOnPage ? i.surname : null}
                 </p>
                   {key < this.state.usersOnPage ? <hr/> : null}
