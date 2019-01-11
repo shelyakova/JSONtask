@@ -10,15 +10,12 @@ function playlist(state = [], action) {
   if (action.type === "ADD_TRACK") {
     return [...state, action.payload];
   }
-  if (action.type === "DELETE_TRACK") {
-    state.splice(action.payload, 1);
-    return [...state];
-  }
-  console.log("STORA", store);
+  console.log("STATE", state);
   return state;
 }
-
+console.log("STORE", store);
 const store = createStore(playlist);
+
 
 ReactDOM.render(
   <Provider store={store}>

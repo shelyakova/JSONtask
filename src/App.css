@@ -1,11 +1,9 @@
 body {
   background: #282c34;
-}
-
-label {
   color: white;
 }
 
-p {
-  color: red;
+.user {
+  background: white;
+  color: #282c34;
 }

@@ -10,39 +10,33 @@ class App extends Component {
     user: []
   };
 
-  getData() {
-    var box = users;
-    var array = [];
-    var values = Object.values(users);
-    console.log(values);
-    values.map((item, key) => {
-      item.map((user, key) => {
-        array[key] = user
-      });
-    });
-    //this.setState({user: array});
-    console.log(this.state);
-  }
-
-
-
   render() {
     const { data,
-      handleClick = () => {},
-      onDelete = () => {}
+      handleClick = () => {}
     } = this.props;
     return (
       <div className="App">
-      {Object.values(users).map((item, key) => (
-          item.map((user, key) => (
-            console.log(user.id, user.name, user.surname, user.desc)
-          ))
-      ))}
         <header className="App-header">
           <label>Users</label>
         </header>
         <main>
-          <User/>
+          <button
+            onClick={() => {
+              Object.values(users).map((item, key) => {
+                  item.map((user, key) => {
+                    handleClick(user.id, user.name, user.surname, user.desc);
+                  })
+              })
+            }}
+          >
+            Show users
+          </button>
+          {data.map((i, key) => (
+            <div class="user">
+              <p key={i.id}>{i.name} {i.surname}</p>
+              <p key={key}>{i.desc}</p>
+            </div>
+          ))}
         </main>
       </div>
     );
@@ -63,11 +57,6 @@ export default connect(
           surname: surname,
           desc: desc
         }
-      }),
-    onDelete: idx =>
-      dispatch({
-        type: "DELETE_TRACK",
-        payload: idx
       })
   })
 )(App);
