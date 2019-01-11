@@ -41,7 +41,7 @@ class App extends Component {
               <div className={key < this.state.usersOnPage ? "user": null}>
                 <p key={i.id}>
                   {key < this.state.usersOnPage ? i.name : null}
-                  {key < this.state.usersOnPage ? "&nbsp;" : null}
+                  {key < this.state.usersOnPage ? " " : null}
                   {key < this.state.usersOnPage ? i.surname : null}
                 </p>
                   {key < this.state.usersOnPage ? <hr/> : null}
